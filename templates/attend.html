@@ -4,126 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <title>BlitzAttend</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        html, body {
-            width: 100%;
-            height: 100%;
-        }
-
-        .body {
-            width: 100%;
-            height: 100%;
-            background-color: antiquewhite;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-        }   
-
-        .container {
-            width: 20vw;
-            height: 80vh;
-            background-color: aqua;
-            border-radius: 36px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .rollno {
-            width: 80%;
-            height: 25%;
-            margin-top: 10%;
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: aliceblue;
-        }
-
-        .name {
-            width: 80%;
-            height: 5%;
-            background-color: aliceblue;
-            border-radius: 10px;
-            margin-top: 2%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .prn {
-            width: 80%;
-            height: 5%;
-            background-color: aliceblue;
-            border-radius: 10px;
-            margin-top: 2%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .batch {
-            width: 80%;
-            height: 5%;
-            background-color: aliceblue;
-            border-radius: 10px;
-            margin-top: 2%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .buttons {
-            width: 80%;
-            height: 20%;
-            margin-top: 10%;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-        }
-
-        .button {
-            width: 48%;
-            border-radius: 10px;
-        }
-
-        .button-present:hover {
-            background-color: green;
-        }
-
-        .button-absent:hover {
-            background-color: red;
-        }
-    </style>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/attend-style.css') }}">
 </head>
 <body>
     <div class="body">
         <div class="container">
 
-            <div class="rollno">-- roll no --</div>
+            <form method="post" id="form" action="/submit-attendance">
 
-            <div class="name"> -- name -- </div>
+                <h1>{{course}}</h1>
+                
+                <input type="hidden" name="course-name" value="{{course}}" id="course-name">
 
-            <div class="prn">-- prn -- </div>
+                <div class="rollno" id="rollno"> -- rollno -- </div>
 
-            <div class="batch">-- batch -- </div>
+                <div class="name" id="name"> -- name -- </div>
 
-            <div class="buttons">
-                <input type="submit" value="Absent" class="button button-absent">
-                <input type="submit" value="Present" class="button button-present">
-            </div>
+                <div class="prn" id="prn"> -- prn -- </div>
 
+                <div class="batch" id="batch"> -- batch -- </div>
+
+                <input type="hidden" name="attendance" id="attendance">
+
+                <div class="buttons">
+                    <button type="button" class="button button-absent" onclick="markAttendance(0)"> Absent </button>
+                    <button type="button" class="button button-present" onclick="markAttendance(1)"> Present </button>
+                </div>
+            </form>
+            
         </div>
     </div>
+
+    <script> const students = {{data | tojson}}; </script>
+    <script src="{{ url_for('static', filename='script/attend-script.js') }}"></script>
 </body>
 </html>
