@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+.body {
+    width: 100%;
+    height: 100%;
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}   
+
+.container {
+    min-width: 20vw;
+    min-height: 80vh;
+    background-color: aqua;
+    border-radius: 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container form {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2%;
+    background-color: aquamarine;
+    border-radius: 10px;
+}
+
+.heading {
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.select-element {
+    margin-top: 8%;
+    width: 90%;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 1rem;
+    background-color: aliceblue;
+}
+
+.submit {
+    width: 90%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: aliceblue;
+    margin-top: 8%; 
+    margin-bottom: 8%;
+}
+
+.submit:hover {
+    background-color: antiquewhite;
+}
+
+@media screen and (max-width: 700px) {
+    
+    .container {
+        width: 98%;
+        height: 98%;
+    }
+
+    .container form {
+        height: auto;
+    }
+
+    .heading {
+        font-size: 3rem;
+    }
+
+    .select-element {
+        width: 80%;
+        padding: 12px;
+        border-radius: 12px;
+        font-size: 1rem;
+        background-color: white;
+    }
+
+    .submit {
+        font-size: 1rem;    
+    }
+
+}
