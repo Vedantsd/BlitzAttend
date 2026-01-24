@@ -35,21 +35,27 @@
             align-items: center;
         }
 
+        .container form {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
         .heading {
             margin-top: 10%;
             margin-bottom: 10%;
         }
 
         .select-element {
-            width: 80%;
             margin-top: 8%;
-            border-radius: 10px;
-            padding: 10px;
-        }
-
-        .options {
-            border-radius: 36px;
-            padding: 10px;
+            width: 80%;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 1rem;
+            background-color: aliceblue;
         }
         
         .submit {
@@ -64,6 +70,35 @@
             background-color: antiquewhite;
         }
 
+        @media screen and (max-width: 700px) {
+            
+            .container {
+                width: 98%;
+                height: 98%;
+            }
+
+            .container form {
+                height: auto;
+            }
+
+            .heading {
+                font-size: 3rem;
+            }
+
+            .select-element {
+                width: 80%;
+                padding: 12px;
+                border-radius: 12px;
+                font-size: 1rem;
+                background-color: white;
+            }
+
+            .submit {
+                font-size: 1rem;    
+            }
+
+        }
+
     </style>
 </head>
 <body>
@@ -72,20 +107,58 @@
 
             <h1 class="heading">Class selection</h1>
 
-            <select name="select-class" id="select-class" class="select-element">
-                <option value="" class="options">--Select a class--</option>
-            </select>
+            <form action="/attendance" method="post">
+                <select name="select-class" id="select-class" class="select-element" required>
+                    <option value="">--Select a class--</option>
+                    {% for class in classes.keys() %}
+                        <option value="{{class}}" class="options">{{class}}</option>
+                    {% endfor %}
+                </select>
 
-            <select name="select-course" id="select-course" class="select-element">
-                <option value="" class="options">--Select a course--</option>
-            </select>
+                <select name="select-course" id="select-course" class="select-element" required>
+                    <option value="">--Select a course--</option>
+                    {% for course in courses %}
+                        <option value="{{ course }}" class="options">{{course}}</option>
+                    {% endfor %}
+                </select>
 
-            <select name="select-batch" id="select-batch" class="select-element">
-                <option value="" class="options">--Select a batch--</option>
-            </select>
+                <select name="select-batch" id="select-batch" class="select-element">
+                    <option value="">--Select a batch--</option>
+                </select>
 
-            <input type="submit" value="Next" class="submit" id="submit">
+                <input type="submit" value="Next" class="submit" id="submit">
+
+            </form>
         </div>
     </div>
+
+
+    <script>
+
+        const batches = {{ class_json | safe}};
+        
+        const classSelect = document.getElementById("select-class");
+        const batchSelect = document.getElementById("select-batch");
+
+
+        classSelect.addEventListener('change', function () {
+            const selectedClass = this.value;
+
+            batchSelect.innerHTML = "<option value='' class='options'>--Select a batch--</option>"
+
+            if (selectedClass && batches[selectedClass]) {
+                batches[selectedClass].forEach(element => {
+                    
+                    const option = document.createElement('option');
+                    option.value = element;
+                    option.textContent = element; 
+                    batchSelect.appendChild(option);
+
+                });
+            }
+        });
+        
+
+    </script>
 </body>
 </html>
