@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <title>BlitzAttend</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .body {
+            width: 100%;
+            height: 100%;
+            background-color: antiquewhite;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }   
+
+        .container {
+            min-width: 20vw;
+            min-height: 80vh;
+            background-color: aqua;
+            border-radius: 36px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .select-element {
+            width: 80%;
+            margin-top: 8%;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .options {
+            border-radius: 36px;
+            padding: 10px;
+        }
+        
+        .submit {
+            width: 80%;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: aliceblue;
+            margin-top: 15%;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="body">
+        <div class="container">
+
+            <select name="select-class" id="select-class" class="select-element">
+                <option value="" class="options">--Select a class--</option>
+            </select>
+
+            <select name="select-course" id="select-course" class="select-element">
+                <option value="" class="options">--Select a course--</option>
+            </select>
+
+            <select name="select-batch" id="select-batch" class="select-element">
+                <option value="" class="options">--Select a batch--</option>
+            </select>
+
+            <input type="submit" value="Next" class="submit" id="submit">
+        </div>
+    </div>
+</body>
+</html>
