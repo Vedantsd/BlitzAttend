@@ -35,26 +35,35 @@ def get_courses(class_name) :
     cursor.execute(sql)
     return cursor.fetchall()
 
-
-
-def add_attendance(data, course_code) :
-
+def add_attendance(data, coursecode) :
     today = date.today()
     formatted_date = f"{today.day}-{today.month}-{today.year}"
     sql = f"insert into attendance_records (course_code, att_date, prn, att_status) values (%s, %s, %s, %s)"
 
     for row in data : 
-        values = (course_code, formatted_date, row[1], row[4])
+        values = (coursecode, formatted_date, row[1], row[4])
         cursor.execute(sql, values)
 
     db.commit()
 
 def get_attendance(course_code) : 
-    sql = f"select * from attendance_records where course_code = {course_code}"
+    sql = f"select * from attendance_records where course_code = '{course_code}'"
     cursor.execute(sql)
     return cursor.fetchall()
 
 def get_name_prn(class_name) : 
-    sql = f"select stud_name, prn from '{class_name}'"
+    sql = f"select stud_name, prn from {class_name}"
     cursor.execute(sql)
     return cursor.fetchall()
+
+def get_all_class_names():
+    sql = "SELECT DISTINCT class_name FROM courses ORDER BY class_name"
+    cursor.execute(sql)
+    classes = [row[0] for row in cursor.fetchall()]
+    return classes
+
+def get_batches_for_class(class_name):
+    sql = f"SELECT DISTINCT batch FROM {class_name} ORDER BY batch"
+    cursor.execute(sql)
+    batches = [row[0] for row in cursor.fetchall()]
+    return batches
