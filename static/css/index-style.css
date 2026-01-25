@@ -21,8 +21,9 @@ html, body {
 .container {
     min-width: 20vw;
     min-height: 80vh;
-    background-color: aqua;
+    background-color: white;
     border-radius: 36px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,7 +37,8 @@ html, body {
     justify-content: center;
     align-items: center;
     margin-bottom: 2%;
-    background-color: aquamarine;
+    background-color: aliceblue;
+    border: 3px solid black;
     border-radius: 10px;
 }
 
@@ -51,14 +53,14 @@ html, body {
     padding: 12px;
     border-radius: 12px;
     font-size: 1rem;
-    background-color: aliceblue;
+    background-color: white;
 }
 
 .submit {
     width: 90%;
     padding: 10px;
     border-radius: 10px;
-    background-color: aliceblue;
+    background-color: lightcyan;
     margin-top: 8%; 
     margin-bottom: 8%;
 }

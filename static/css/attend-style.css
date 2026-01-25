@@ -21,10 +21,11 @@ html, body {
 .container {
     width: 20vw;
     height: 80vh;
-    background-color: aqua;
+    background-color: white;
     border-radius: 36px;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     align-items: center;
 }
 
@@ -47,7 +48,7 @@ html, body {
     justify-content: center;
     align-items: center;
     background-color: aliceblue;
-
+    border: 3px solid black;
     font-size: 4rem;
     font-weight: bold;
 }
@@ -63,6 +64,7 @@ html, body {
     justify-content: center;
     align-items: center;
     font-size: 1.3rem;
+    border: 3px solid black;
 }
 
 .prn {
@@ -76,6 +78,7 @@ html, body {
     justify-content: center;
     align-items: center;
     font-size: 1.3rem;
+    border: 3px solid black;
 }
 
 .batch {
@@ -89,6 +92,7 @@ html, body {
     justify-content: center;
     align-items: center;
     font-size: 1.3rem;
+    border: 3px solid black;
 }
 
 .buttons {
