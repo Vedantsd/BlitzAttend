@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlitzAttend - User Dashboard</title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/user-dashboard-style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">👋</div>
+        <h1 class="welcome">Welcome</h1>
+        <h2 class="staff-name">{{ user.username }}</h2>
+
+        <div class="buttons">
+            <a href="/dashboard" class="btn btn-primary">
+                <span class="btn-icon">📊</span>
+                <span>View Attendance</span>
+            </a>
+
+            <a href="/class-details" class="btn btn-secondary">
+                <span class="btn-icon">✏️</span>
+                <span>Take Attendance</span>
+            </a>
+        </div>
+
+        <div class="logout">
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+    <script>
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                window.location.href = '/logout';
+            }
+        }
+    </script>
+</body>
+</html>
