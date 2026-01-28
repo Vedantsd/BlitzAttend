@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlitzAttend - Attendance Dashboard</title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/dashboard-style.css') }}">
+</head>
+<body>
+    <div class="header">
+        <h1>BlitzAttend Dashboard</h1>
+        <div class="filters">
+            <select name="select-class" id="select-class" class="select-class">
+                <option value="">-- Select a Class --</option>
+                {% for class in classes %}
+                    <option value="{{class}}" id="{{class}}">{{class}}</option>
+                {% endfor %}
+            </select>
+
+            <select name="select-batch" id="select-batch" class="select-batch" disabled>
+                <option value="">-- Select a Batch --</option>
+            </select>
+
+            <select name="select-course" id="select-course" class="select-course" disabled>
+                <option value="">-- Select a Course --</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="loading">Please select class, batch, and course to view attendance</div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script/dashboard-script.js') }}"></script>
+</body>
+</html>
