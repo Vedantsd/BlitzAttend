@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlitzAttend - Admin Panel</title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/admin-style.css') }}">
+</head>
+<body>
+    <div class="header">
+        <h1>🔐 Admin Panel</h1>
+        <div class="user-info">
+            <span class="user-badge">{{ user.username }} (Admin)</span>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="actions">
+            <button class="add-btn" onclick="openAddModal()">+ Add New User</button>
+        </div>
+
+        <div id="message"></div>
+
+        <table id="usersTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>User Type</th>
+                    <th>Created At</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="usersBody">
+            </tbody>
+        </table>
+    </div>
+
+    <div id="addModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New User</h2>
+                <button class="close-btn" onclick="closeAddModal()">&times;</button>
+            </div>
+            <form id="addUserForm" onsubmit="addUser(event)">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="add_username" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="add_email" required>
+                </div>
+                <div class="form-group">
+                    <label>User Type</label>
+                    <select id="add_user_type" required>
+                        <option value="staff">Staff</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>4-Digit PIN</label>
+                    <div class="pin-inputs">
+                        <input type="password" maxlength="1" class="pin-input add-pin" data-index="0">
+                        <input type="password" maxlength="1" class="pin-input add-pin" data-index="1">
+                        <input type="password" maxlength="1" class="pin-input add-pin" data-index="2">
+                        <input type="password" maxlength="1" class="pin-input add-pin" data-index="3">
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancel" onclick="closeAddModal()">Cancel</button>
+                    <button type="submit" class="btn-submit">Add User</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="changeModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Change Password</h2>
+                <button class="close-btn" onclick="closeChangeModal()">&times;</button>
+            </div>
+            <form id="changePasswordForm" onsubmit="changePassword(event)">
+                <input type="hidden" id="change_user_id">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="change_username" readonly style="background: #f5f5f5;">
+                </div>
+                <div class="form-group">
+                    <label>New 4-Digit PIN</label>
+                    <div class="pin-inputs">
+                        <input type="password" maxlength="1" class="pin-input change-pin" data-index="0">
+                        <input type="password" maxlength="1" class="pin-input change-pin" data-index="1">
+                        <input type="password" maxlength="1" class="pin-input change-pin" data-index="2">
+                        <input type="password" maxlength="1" class="pin-input change-pin" data-index="3">
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancel" onclick="closeChangeModal()">Cancel</button>
+                    <button type="submit" class="btn-submit">Update Password</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="{{ url_for('static', filename='script/admin-script.js') }}"></script>
+</body>
+</html>
