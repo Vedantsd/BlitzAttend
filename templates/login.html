@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlitzAttend - Login</title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/login-style.css') }}">
+</head>
+<body>
+    <div class="logo">BlitzAttend</div>
+    
+    <div class="container">
+        <h2>Welcome Back</h2>
+        
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input 
+                    type="text" 
+                    id="username" 
+                    class="username" 
+                    placeholder="Enter your username"
+                    required
+                    autocomplete="username"
+                >
+            </div>
+
+            <div class="form-group">
+                <label>4-Digit PIN</label>
+                <div class="pass-container">
+                    <input type="password" inputmode="numeric" maxlength="1" class="pass-input" data-index="0" />
+                    <input type="password" inputmode="numeric" maxlength="1" class="pass-input" data-index="1" />
+                    <input type="password" inputmode="numeric" maxlength="1" class="pass-input" data-index="2" />
+                    <input type="password" inputmode="numeric" maxlength="1" class="pass-input" data-index="3" />
+                </div>
+            </div>
+
+            <div class="error-message" id="errorMessage"></div>
+            <div class="loading" id="loading">
+                <span class="loading-spinner"></span>
+                Logging in...
+            </div>
+        </form>
+
+        <div class="footer">
+            Secure access to attendance management
+        </div>
+    </div>
+
+
+    <script src="{{ url_for('static', filename='script/login-script.js') }}"></script>
+</body>
+</html>
