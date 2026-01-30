@@ -12,23 +12,16 @@
 
             <form method="post" id="form" action="/submit-attendance">
 
-                <h1>{{course}}</h1>
+                <h1 class="course-title">{{course}}</h1>
                 
                 <input type="hidden" name="course-name" value="{{course}}" id="course-name">
-
-                <div class="rollno" id="rollno"> -- rollno -- </div>
-
-                <div class="name" id="name"> -- name -- </div>
-
-                <div class="prn" id="prn"> -- prn -- </div>
-
-                <div class="batch" id="batch"> -- batch -- </div>
-
                 <input type="hidden" name="attendance" id="attendance">
 
-                <div class="buttons">
-                    <button type="button" class="button button-absent" onclick="markAttendance(0)"> Absent </button>
-                    <button type="button" class="button button-present" onclick="markAttendance(1)"> Present </button>
+                <div class="students-list" id="students-list">
+                </div>
+
+                <div class="submit-container">
+                    <button type="button" class="button button-submit" onclick="submitAttendance()">Submit Attendance</button>
                 </div>
             </form>
             
